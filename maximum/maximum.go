@@ -25,7 +25,7 @@ func maximum(context *gin.Context) {
 		context.AbortWithError(http.StatusBadRequest, err)
 	}
 	for i, e := range req.X {
-		if i == 0 || e < req.RESULT {
+		if i == 0 || e > req.RESULT {
 			req.RESULT = e
 		}
 	}
