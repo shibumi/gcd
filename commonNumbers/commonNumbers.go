@@ -8,7 +8,7 @@ import (
 type REQUEST struct {
 	X      []int `json:"x" binding:"required"`
 	Y      []int `json:"y" binding:"required"`
-	RESULT []int `json:"number"`
+	RESULT []int `json:"result"`
 }
 
 func main() {
