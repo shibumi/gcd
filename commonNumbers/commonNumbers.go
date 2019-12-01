@@ -24,7 +24,7 @@ func main() {
 func commonNumbers(context *gin.Context) {
 	var req REQUEST
 	if err := context.BindJSON(&req); err != nil {
-		context.AbortWithStatusJSON(http.StatusBadRequest, err)
+		context.AbortWithError(http.StatusBadRequest, err)
 		return
 	}
 	for _, xe := range req.X {
