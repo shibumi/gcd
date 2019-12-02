@@ -14,9 +14,15 @@ func main() {
 	router := gin.Default()
 	v1 := router.Group("/api/v1/")
 	{
+		v1.GET("/ping", ping)
 		v1.POST("/", minimum)
 	}
 	router.Run()
+}
+
+func ping(context *gin.Context) {
+	context.AbortWithStatus(http.StatusOK)
+	return
 }
 
 func minimum(context *gin.Context) {

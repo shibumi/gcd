@@ -14,9 +14,15 @@ func main() {
 	router := gin.Default()
 	v1 := router.Group("/api/v1/")
 	{
+		v1.GET("/ping", ping)
 		v1.POST("/", getDivisors)
 	}
 	router.Run()
+}
+
+func ping(context *gin.Context) {
+	context.AbortWithStatus(http.StatusOK)
+	return
 }
 
 // getDivisors returns all valid divisors for a number.
