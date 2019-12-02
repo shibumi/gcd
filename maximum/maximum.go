@@ -11,13 +11,22 @@ type REQUEST struct {
 }
 
 func main() {
+	router := setupRouter()
+	router.Run()
+}
+
+func setupRouter() *gin.Engine {
 	router := gin.Default()
 	v1 := router.Group("/api/v1/")
 	{
 		v1.GET("/ping", ping)
 		v1.POST("/", maximum)
 	}
-	router.Run()
+	basic := router.Group("/")
+	{
+		basic.GET("/ping", ping)
+	}
+	return router
 }
 
 func ping(context *gin.Context) {
