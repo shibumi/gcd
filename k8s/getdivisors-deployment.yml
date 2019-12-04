@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: getdivisors
+  namespace: gcd
+spec:
+  selector:
+    matchLabels:
+      app: gcd
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gcd
+    spec:
+      containers:
+      - name: getdivisors
+        image: gcd/getdivisors:1.0
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+
+
+
